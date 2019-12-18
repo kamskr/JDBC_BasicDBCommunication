@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS `Group`;
+DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS `UserGroup`;
+CREATE TABLE `User` (
+  `user_login` varchar(30) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  PRIMARY KEY (`user_login`)
+);
+
+CREATE TABLE `Group` (
+`group_id` int(11) NOT NULL,
+`group_name` varchar(30) NOT NULL,
+`group_description` varchar(200) NOT NULL,
+PRIMARY KEY (`group_id`)
+);
+
+CREATE TABLE `UserGroup` (
+  `group_id` int(11) NOT NULL,
+  `user_login` varchar(30) NOT NULL,
+  PRIMARY KEY (`group_id`,`user_login`),
+  CONSTRAINT `k1` FOREIGN KEY (`group_id`) REFERENCES `Group` (`group_id`)  ON DELETE CASCADE,
+  CONSTRAINT `k2` FOREIGN KEY (`user_login`) REFERENCES `User` (`user_login`)  ON DELETE CASCADE
+);
+
+
