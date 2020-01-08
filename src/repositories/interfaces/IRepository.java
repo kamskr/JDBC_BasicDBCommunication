@@ -1,13 +1,14 @@
-package repositories;
+package repositories.interfaces;
 
 import dtos.DTOBase;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public interface IRepository<TDTO extends DTOBase> {
 
-    Connection getConnection();
+    Connection getConnection() throws SQLException;
 
     void add(TDTO dto);
 

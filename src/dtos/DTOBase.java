@@ -1,8 +1,12 @@
 package dtos;
 
+import java.sql.Connection;
+import java.sql.Statement;
+
 public abstract class DTOBase {
 
     private int _id;
+
 
     protected DTOBase() {}
 
@@ -20,5 +24,11 @@ public abstract class DTOBase {
 
     public boolean hasExistingId() {
         return getId() > 0;
+    }
+
+    public int compareTo(DTOBase o) {
+        if(o.getId() != getId()) return getId() - o.getId();
+
+        return equals(o) ? 0 : -1;
     }
 }

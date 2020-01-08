@@ -2,6 +2,7 @@ package dtos;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class GroupDTO extends DTOBase {
 
@@ -53,5 +54,29 @@ public class GroupDTO extends DTOBase {
         if (_users != null) {
             _users.remove(user);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupDTO groupDTO = (GroupDTO) o;
+        return Objects.equals(_name, groupDTO._name) &&
+                Objects.equals(_description, groupDTO._description) &&
+                Objects.equals(_users, groupDTO._users);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_name, _description, _users);
+    }
+
+    @Override
+    public String toString() {
+        return "GroupDTO{" +
+                "_name='" + _name + '\'' +
+                ", _description='" + _description + '\'' +
+                ", _users=" + _users +
+                '}';
     }
 }

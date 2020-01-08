@@ -3,7 +3,7 @@ package test;
 import dtos.DTOBase;
 import org.junit.After;
 import org.junit.Before;
-import repositories.IRepository;
+import repositories.interfaces.IRepository;
 
 
 public abstract class RepositoryTestBase<TDTO extends DTOBase, TRepository extends IRepository<TDTO>> {
@@ -24,6 +24,8 @@ public abstract class RepositoryTestBase<TDTO extends DTOBase, TRepository exten
             _repository.rollbackTransaction();
         }
     }
+
+
 
     protected abstract TRepository Create();
 }

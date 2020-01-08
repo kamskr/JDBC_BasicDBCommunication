@@ -1,25 +1,27 @@
-DROP TABLE IF EXISTS `Group`;
+DROP TABLE IF EXISTS `Groups`;
 DROP TABLE IF EXISTS `User`;
 DROP TABLE IF EXISTS `UserGroup`;
+
 CREATE TABLE `User` (
+  `user_id` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `user_login` varchar(30) NOT NULL,
   `user_password` varchar(100) NOT NULL,
-  PRIMARY KEY (`user_login`)
+  PRIMARY KEY (`user_id`)
 );
 
-CREATE TABLE `Group` (
-`group_id` int(11) NOT NULL,
+CREATE TABLE `AGroup` (
+`group_id` MEDIUMINT NOT NULL AUTO_INCREMENT,
 `group_name` varchar(30) NOT NULL,
 `group_description` varchar(200) NOT NULL,
 PRIMARY KEY (`group_id`)
 );
 
 CREATE TABLE `UserGroup` (
-  `group_id` int(11) NOT NULL,
-  `user_login` varchar(30) NOT NULL,
-  PRIMARY KEY (`group_id`,`user_login`),
-  CONSTRAINT `k1` FOREIGN KEY (`group_id`) REFERENCES `Group` (`group_id`)  ON DELETE CASCADE,
-  CONSTRAINT `k2` FOREIGN KEY (`user_login`) REFERENCES `User` (`user_login`)  ON DELETE CASCADE
+  `group_id` MEDIUMINT NOT NULL,
+  `user_id` MEDIUMINT NOT NULL,
+  PRIMARY KEY (`group_id`,`user_id`),
+  CONSTRAINT `k1` FOREIGN KEY (`group_id`) REFERENCES `AGroup` (`group_id`)  ON DELETE CASCADE,
+  CONSTRAINT `k2` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`)  ON DELETE CASCADE
 );
 
 
