@@ -11,7 +11,7 @@ public abstract class Repository<T extends DTOBase> implements IRepository<T> {
 
     private final static String DBURL = "jdbc:mysql://localhost:3306/utp";
     private final static String DBUSER = "root";
-    private final static String DBPASS = "rozciąganie";
+    private final static String DBPASS = "******";
     private final static String DBDRIVER = "com.mysql.cj.jdbc.Driver";
     protected static Connection _connection;
 
